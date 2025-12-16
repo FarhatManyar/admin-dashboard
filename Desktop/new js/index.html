@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupees To Dollar Converter</title>
+    <style>
+      
+       
+        .body{
+           border: 2px solid black;
+           width:300px;
+           height: 200px;
+           margin: 0 auto;
+           margin-top:20px;
+           padding:40px 20px;
+           border-radius:10px;
+           padding-bottom:20px;
+           display:flex;
+           flex-direction:column;
+           align-items:center;
+           background-color: rgb(235, 233, 156);
+        
+        }
+         .app-heading{
+            color: rgb(209, 99, 99);
+           background-color: blanchedalmond;
+           text-align: center;
+         
+
+        }
+        .container{
+            margin-top: 20px; 
+            display: block; 
+            
+        }
+        .input-number{
+            outline: none;
+            width: 300px;
+            height: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 20px;
+            border: none;
+            font-size: medium;
+            
+        }
+        .btn{
+            color: aliceblue;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor:pointer;
+            width: 110px;
+            font-size: 16px;
+        }
+        .btn-convert{
+            background-color: rgb(97, 194, 197);
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .btn-clear{
+            background-color: rgb(221, 164, 164);
+        }
+    </style>
+</head>
+
+<body>
+    
+    
+    <h1 class="app-heading">Rupees To Dollars </h1>
+    <div class="body">
+    <div class="container">
+        <input type="number" 
+        id="num1" placeholder="Enter Money Rupees"
+        class="input-number">
+    </div>
+    <p id="result"></p>
+    <div class="btn-container">
+        <button class="btn btn-clear" onclick="clearOutput()">Clear</button>
+        <button class="btn btn-convert" onclick="ConvertCurrency()">
+            Convert
+        </button>
+    </div>
+</div>
+
+    <script>
+    function ConvertCurrency(){
+        const input = document.getElementById("num1");
+        const resultElement = document.getElementById("result");
+
+
+
+       const exchangeRate = 83; 
+        const moneyInrupees = parseFloat(input.value);
+        if(isNaN(moneyInrupees)){ resultElement.innerText="please enter a number";
+            return;
+        }
+        if(moneyInrupees<=0){resultElement.innerText="amount must be greater than zero";
+            return;
+        }
+        const moneyIndollars =(moneyInrupees/exchangeRate).toFixed(2);  
+        resultElement.innerText = `${moneyInrupees}₹ = ${moneyIndollars}$`;
+    }
+      
+    function clearOutput(){
+        const input = document.getElementById("num1");
+        const resultElement = document.getElementById("result");
+        input.value = "";
+        resultElement.innerText = "";
+    }
+    </script>   
+</body>
+</html>
